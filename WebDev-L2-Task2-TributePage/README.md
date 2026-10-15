@@ -1,30 +1,26 @@
-# Kalpana Chawla Tribute Page
+# Beyond the Sky — Kalpana Chawla Tribute (Enhanced Edition)
 
-**Oasis Infobyte Internship — Level 2, Task 2**
+A responsive, cinematic tribute built with HTML, CSS, and vanilla JavaScript.
 
-## About
-An immersive tribute website celebrating the life, achievements, and legacy of Kalpana Chawla, the first woman of Indian origin to travel to space.
+## Open the website
+1. Extract the ZIP.
+2. Double-click `index.html`. It opens in your computer's default browser.
+3. To open specifically in Google Chrome, right-click `index.html` → **Open with** → **Google Chrome**. If Chrome is not listed, set Google Chrome as your default browser in your operating system settings.
+4. Internet access is recommended because photos, space imagery, and fonts load from external sources.
 
-The website presents her journey, education, space missions, achievements, and lasting inspiration through an engaging visual experience.
+## Enhanced features
+- Cinematic space hero, animated starfield, and decorative orbit/planet effect
+- Added fonts: Playfair Display, DM Sans, DM Mono, Cormorant Garamond, and Space Grotesk
+- Biography, educational journey, career context, spaceflight facts, and timeline
+- Extra thematic cards and a visual gallery (illustrative images are labelled as such)
+- STS-107 crew remembrance section
+- Missions, legacy, and NASA further-reading links
+- Responsive mobile navigation, scroll progress, reveal effects, and subtle hero parallax
+- Reduced-motion support for accessibility
 
-## Features
-- Biography and educational journey
-- Space mission timeline
-- Tribute to the Columbia crew
-- Space-themed visual design
-- Photography gallery
-- Animated orbital illustrations
-- Responsive layout
+## Files
+- `index.html` — all page markup, CSS, and JavaScript
+- `README.md` — setup and project notes
+- `SOURCES.md` — source and image credit information
 
-## Technologies Used
-- HTML5
-- CSS3
-- JavaScript
-
-## How to Run
-Open `index.html` in a modern web browser.
-
-An internet connection may be required for externally hosted photographs and fonts.
-
-## Internship
-Oasis Infobyte — Web Development & Designing Internship
+This is a tribute project and is not affiliated with NASA. The website is designed to work as a local HTML file; remote images/fonts need an internet connection. Verify reuse terms before commercial use.
