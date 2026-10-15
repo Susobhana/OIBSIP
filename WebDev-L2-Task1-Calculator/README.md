@@ -1,16 +1,8 @@
-# Calculator
+# Calculator Studio — Exact Background + Vibrant UI
 
-**Oasis Infobyte Internship — Level 2, Task 1**
+This build uses the user's supplied artwork as the exact, byte-for-byte page background:
+`assets/calculator-background.png`
 
-A responsive calculator built using HTML, CSS, and JavaScript.
+The foreground UI has been redesigned with colorful glassmorphism, gradients, depth, glow, and richer component styling. The background artwork itself is not regenerated, recolored, blurred, tinted, or replaced.
 
-## Features
-- Interactive calculator interface
-- Arithmetic operations
-- Responsive design
-- User-friendly layout
-
-## Technologies Used
-- HTML5
-- CSS3
-- JavaScript
+All calculator functionality from the source project is preserved.

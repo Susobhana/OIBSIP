@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculator Studio — a polished CodeAlpha frontend calculator project.">
+  <title>Calculator Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"><img src="assets/calculator-logo.png" alt="" class="brand-logo-img"></div>
+      <div><strong>Calculator Studio</strong><span>CodeAlpha · Task 2</span></div>
+    </div>
+    <div class="top-actions">
+      <div class="mode-switch" role="group" aria-label="Calculator mode">
+        <button class="mode-btn active" data-mode="standard">Standard</button>
+        <button class="mode-btn" data-mode="scientific">Scientific</button>
+      </div>
+      <button id="themeBtn" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">☼</button>
+      <button id="helpBtn" class="icon-btn" aria-label="Keyboard shortcuts" title="Keyboard shortcuts">?</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="workspace">
+      <article class="calculator-card">
+        <div class="status-row">
+          <span id="modeStatus">STANDARD</span>
+          <span id="memoryStatus" class="memory-status" hidden>M</span>
+          <span class="keyboard-hint">⌨ Keyboard ready</span>
+        </div>
+
+        <div class="display" aria-label="Calculator display">
+          <div id="expression" class="expression" aria-label="Current expression"></div><div id="liveHint" class="live-hint" aria-live="polite">Ready · type to calculate</div>
+          <div class="result-row">
+            <div id="result" class="result" aria-live="polite">0</div>
+            <div class="display-actions"><button id="copyExpressionBtn" class="copy-btn" aria-label="Copy expression" title="Copy expression">Expr</button><button id="copyBtn" class="copy-btn" aria-label="Copy result" title="Copy result">Copy</button></div>
+          </div>
+        </div>
+
+        <div class="memory-row" aria-label="Memory controls">
+          <button data-action="mc">MC</button><button data-action="mr">MR</button>
+          <button data-action="mplus">M+</button><button data-action="mminus">M−</button>
+          <button data-action="ms">MS</button>
+        </div>
+
+        <div id="scientificPad" class="scientific-pad" hidden>
+          <button data-token="sin(">sin</button><button data-token="cos(">cos</button>
+          <button data-token="tan(">tan</button><button data-token="sqrt(">√</button>
+          <button data-token="log(">log</button><button data-token="ln(">ln</button>
+          <button data-token="pi">π</button><button data-token="e">e</button>
+          <button data-token="^2">x²</button><button data-token="^">xʸ</button>
+          <button id="angleBtn" data-action="angle">DEG</button><button data-token="ANS">ANS</button>
+        </div>
+
+        <div class="keypad" aria-label="Calculator keypad">
+          <button class="danger" data-action="clear" title="Clear all (Escape)">AC</button>
+          <button data-token="(">(</button><button data-token=")">)</button><button data-token="%">%</button>
+          <button class="operator" data-token="/">÷</button>
+
+          <button data-token="7">7</button><button data-token="8">8</button><button data-token="9">9</button>
+          <button class="operator" data-token="*">×</button>
+
+          <button data-token="4">4</button><button data-token="5">5</button><button data-token="6">6</button>
+          <button class="operator" data-token="-">−</button>
+
+          <button data-token="1">1</button><button data-token="2">2</button><button data-token="3">3</button>
+          <button class="operator" data-token="+">+</button>
+
+          <button data-action="sign">±</button><button class="zero" data-token="0">0</button>
+          <button data-token=".">.</button><button class="equals" data-action="equals">=</button>
+
+          <button class="backspace" data-action="backspace">⌫</button>
+          <button data-action="delete" title="Clear screen (Delete)">Delete</button>
+          <button data-action="clearEntry">CE</button>
+        </div>
+      <div class="quick-tools" aria-label="Quick calculation tools">
+          <div class="quick-head"><div><span class="eyebrow">QUICK TOOLS</span><h3>Useful shortcuts</h3></div><button id="focusBtn" class="mini-btn" type="button">Focus mode</button></div>
+          <div class="quick-grid">
+            <button class="quick-card" data-quick="percent"><span class="quick-icon pink-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="15" cy="15" r="5"/><circle cx="33" cy="33" r="5"/><path d="M13 35 35 13"/><path d="M12 36 36 12"/></svg></span><strong>Percentage</strong><small>Find a percentage of a value</small></button>
+            <button class="quick-card" data-quick="discount"><span class="quick-icon orange-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 12h30v24H9z"/><path d="M16 19h16M16 29h10"/><path d="m30 28 4 4 7-8"/></svg></span><strong>Discount</strong><small>Calculate sale price instantly</small></button>
+            <button class="quick-card" data-quick="tip"><span class="quick-icon gold-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7 28 18l11 1-8.5 7 2.7 11L24 31l-9.2 6 2.7-11L9 19l11-1z"/></svg></span><strong>Tip</strong><small>Split a bill with tip</small></button>
+            <button class="quick-card" data-quick="gst"><span class="quick-icon green-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 10h28v28H10z"/><path d="M16 17h16M16 24h11M16 31h8"/><circle cx="34" cy="32" r="4"/></svg></span><strong>GST</strong><small>Add or remove tax</small></button>
+          </div>
+        </div>
+      </article>
+
+      <aside class="history-card">
+        <div class="panel-head">
+          <div><span class="eyebrow">ARCHIVE</span><h2>History</h2></div>
+          <div class="panel-tools"><span id="historyCount">0</span></div>
+        </div>
+        <input id="historySearch" class="search" type="search" placeholder="Search calculations..." aria-label="Search calculations">
+        <div class="favorites-filter">
+          <button id="allHistoryBtn" class="filter-btn active">All</button>
+          <button id="favHistoryBtn" class="filter-btn">Favorites</button>
+        </div>
+        <div class="history-insights" aria-label="History insights">
+          <div><span>Calculations</span><strong id="insightTotal">0</strong></div>
+          <div><span>Favorites</span><strong id="insightFav">0</strong></div>
+          <div><span>Last result</span><strong id="insightLast">—</strong></div>
+        </div>
+        <div class="history-actions"><button id="exportHistoryBtn" class="text-btn">Export</button><button id="clearHistoryBtn" class="text-btn">Clear</button></div>
+        <div id="historyList" class="history-list">
+          <div class="empty-state"><strong>No calculations yet</strong><span>Your completed calculations will appear here.</span></div>
+        </div>
+      </aside>
+    </section>
+
+
+    <section class="dashboard-zone" aria-label="Studio dashboard">
+      <div class="section-heading"><div><span class="eyebrow">YOUR STUDIO</span><h2>Numbers, but make them <em>beautiful.</em></h2><p>Explore tools, trends and playful ways to work with numbers.</p></div><div class="live-pill"><span></span> Live workspace</div></div>
+      <div class="dashboard-grid">
+        <article class="dash-card dash-gradient"><span class="dash-icon cyan"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 12h28v27H10z"/><path d="M15 8v8M33 8v8M10 19h28"/><path d="m17 29 5 5 10-11"/></svg></span><small>Today</small><strong id="dashToday">0</strong><span>calculations</span><div class="sparkline" id="sparkline" aria-hidden="true"></div></article>
+        <article class="dash-card"><span class="dash-icon purple"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 34 19 24l7 7 13-17"/><path d="M31 14h8v8"/></svg></span><small>Last result</small><strong id="dashLast">—</strong><span>saved to your archive</span></article>
+        <article class="dash-card"><span class="dash-icon gold"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 7 5.2 10.6 11.7 1.7-8.5 8.3 2 11.7L24 34l-10.4 5.3 2-11.7-8.5-8.3 11.7-1.7z"/></svg></span><small>Favourite</small><strong id="dashFav">0</strong><span>starred calculations</span></article>
+        <article class="dash-card"><span class="dash-icon blue"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M27 5c1 9-8 10-8 18 0 4 2 6 5 8-1-6 4-8 7-13 3 4 7 8 7 14 0 7-5 11-14 11S9 38 9 30c0-6 4-11 10-16"/><path d="M24 33c-2 3-2 7 2 9 4-1 6-4 5-8"/></svg></span><small>Session streak</small><strong id="dashStreak">0</strong><span>inputs in a row</span></article>
+      </div>
+    </section>
+
+    <section class="toolbox-zone" aria-label="Creative calculator tools">
+      <div class="section-heading"><div><span class="eyebrow">TOOLBOX</span><h2>Pick a playground.</h2><p>Everything from everyday conversions to graphs and geometry.</p></div></div>
+      <div class="toolbox-grid">
+        <button class="lab-card teal" data-lab="unit"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M12 18h32M12 38h32M19 12v32M37 12v32"/><path d="m27 23 7 7m-7 0 7-7"/></svg></span><div><strong>Unit Lab</strong><small>Length, mass, temperature & data</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card violet" data-lab="finance"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M10 18h36v26H10z"/><path d="M17 18v-5h22v5"/><circle cx="28" cy="31" r="7"/><path d="M28 27v8M25 30h6"/></svg></span><div><strong>Money Lab</strong><small>Interest, EMI, discount & GST</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card blue" data-lab="statistics"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M10 45h36M15 40V26h7v14M25 40V17h7v23M35 40V9h7v31"/></svg></span><div><strong>Stats Lab</strong><small>Mean, median, range & spread</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card orange" data-lab="geometry"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M10 42 28 10l18 32z"/><path d="M16 38h24M28 10v32"/><circle cx="28" cy="35" r="3"/></svg></span><div><strong>Geometry Lab</strong><small>Area, perimeter & volume</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card pink" data-lab="date"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><rect x="9" y="13" width="38" height="34" rx="6"/><path d="M16 9v9M40 9v9M9 23h38"/><circle cx="21" cy="31" r="2"/><circle cx="29" cy="31" r="2"/><circle cx="37" cy="31" r="2"/><circle cx="21" cy="39" r="2"/><circle cx="29" cy="39" r="2"/></svg></span><div><strong>Date Lab</strong><small>Age, date difference & countdown</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card green" data-lab="currency"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="18"/><path d="M34 20c-2-3-10-3-11 2-1 6 12 3 11 10-1 5-9 6-13 2M28 14v28"/></svg></span><div><strong>Currency Lab</strong><small>Convert with your own live rate</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card rainbow" data-lab="graph"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M9 45h38M12 42V11"/><path d="M13 35c7-1 6-15 14-15 7 0 6 11 15-8"/></svg></span><div><strong>Graph Lab</strong><small>Plot y = f(x) in real time</small></div><span class="lab-arrow">↗</span></button>
+        <button class="lab-card dark" data-lab="explain"><span class="lab-art"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M28 9c-10 0-18 7-18 16 0 5 2 9 6 12v9h24v-9c4-3 6-7 6-12 0-9-8-16-18-16z"/><path d="M21 39h14M22 45h12"/><path d="M23 23h10M28 18v10"/></svg></span><div><strong>Explain It</strong><small>Turn a result into simple steps</small></div><span class="lab-arrow">↗</span></button>
+      </div>
+    </section>
+
+    <section class="visual-zone" aria-label="Number visualizer">
+      <div class="visual-copy"><span class="eyebrow">NUMBER PLAYGROUND</span><h2>See your numbers move.</h2><p>Enter a few values and turn them into a visual story. No data leaves your browser.</p><div class="visual-controls"><input id="vizInput" value="12, 24, 18, 31, 26, 42" aria-label="Values for visualizer"><button id="vizAnimate" class="primary-btn">Animate</button></div></div>
+      <div class="bar-visual" id="barVisual" aria-label="Animated bar chart"></div>
+    </section>
+    <section class="creative-strip" aria-label="Calculator activity"><div class="activity-orbit" aria-hidden="true"><span></span><span></span><span></span></div><div><span class="eyebrow">LIVE CALCULATION LAB</span><h2 id="creativeTitle">Type it. See it. Solve it.</h2><p id="creativeText">Real-time previews keep your next answer visible before you press equals.</p></div><div class="creative-stats"><div><strong id="sessionCount">0</strong><span>session ops</span></div><div><strong id="sessionStreak">0</strong><span>streak</span></div></div></section>
+
+    <section class="feature-strip">
+      <div><span class="eyebrow">CALCULATOR STUDIO</span><h2>Fast everyday calculations, with room to explore.</h2><p class="feature-note">Try scientific mode, quick tools, keyboard shortcuts, and a persistent calculation archive.</p></div>
+      <div class="feature-pills"><span>Safe parser</span><span>Local history</span><span>Keyboard-first</span><span>Live preview</span><span>Responsive</span></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="helpDialog" class="dialog">
+    <button class="dialog-close" data-close="helpDialog" aria-label="Close">×</button>
+    <span class="eyebrow">KEYBOARD</span><h2>Shortcuts</h2>
+    <div class="shortcut-grid">
+      <span>0–9</span><span>Numbers</span><span>+ − × ÷</span><span>Operators</span>
+      <span>Enter / =</span><span>Calculate</span><span>Esc</span><span>Clear</span>
+      <span>⌫</span><span>Backspace</span><span>Delete</span><span>Clear</span>
+      <span>%</span><span>Percentage</span><span>( )</span><span>Parentheses</span>
+    </div>
+  </dialog>
+
+  <dialog id="quickDialog" class="dialog quick-dialog">
+    <button class="dialog-close" data-close="quickDialog" aria-label="Close">×</button>
+    <span class="eyebrow" id="quickEyebrow">QUICK TOOL</span><h2 id="quickTitle">Percentage</h2>
+    <p id="quickDescription" class="dialog-copy">Enter two values to calculate.</p>
+    <div id="quickFields" class="quick-fields"></div>
+    <div class="quick-result"><span>Result</span><strong id="quickResult">—</strong></div>
+    <div class="quick-dialog-actions"><button id="quickApply" class="primary-btn quick-enter-btn" type="button">Enter result</button><button class="secondary-btn" data-close="quickDialog">Close</button></div>
+  </dialog>
+
+
+  <dialog id="labDialog" class="dialog lab-dialog"><button class="dialog-close" data-close="labDialog" aria-label="Close">×</button><span class="eyebrow" id="labEyebrow">LAB</span><h2 id="labTitle">Tool</h2><p id="labDescription" class="dialog-copy"></p><div id="labBody" class="lab-body"></div></dialog>
+
+  <div id="focusOverlay" class="focus-overlay" hidden><div class="focus-message"><span class="eyebrow">FOCUS MODE</span><strong>One calculation at a time.</strong><span>Press Esc or the close button to return.</span><button id="exitFocusBtn" class="primary-btn">Exit focus mode</button></div></div>
+
+  <script src="script.js"></script>
+<script>
+(() => {
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const labDialog=$('#labDialog'), labTitle=$('#labTitle'), labDescription=$('#labDescription'), labBody=$('#labBody');
+  const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-IN',{maximumFractionDigits:2}).format(n):'—';
+  const field=(id,label,type='number',placeholder='0')=>`<label>${label}<input id="lab_${id}" type="${type}" ${type==='number'?'step="any"':''} placeholder="${placeholder}"></label>`;
+  function openLab(type){
+    const configs={
+      unit:['UNIT LAB','Convert common units instantly.','unit'],finance:['MONEY LAB','Explore everyday finance without leaving the page.','finance'],statistics:['STATS LAB','Turn a list of numbers into a mini statistical report.','statistics'],geometry:['GEOMETRY LAB','Calculate areas, perimeters and volumes.','geometry'],date:['DATE LAB','Compare dates, calculate age and plan ahead.','date'],currency:['CURRENCY LAB','Use your own exchange rate so the tool works offline.','currency'],graph:['GRAPH LAB','Plot a function visually in your browser.','graph'],explain:['EXPLAIN IT','Get a friendly step-by-step explanation for common calculations.','explain']};
+    const [title,desc]=configs[type]; labTitle.textContent=title;labDescription.textContent=desc;labBody.innerHTML=templates[type]();labDialog.showModal();setupLab(type);
+  }
+  const templates={
+    unit:()=>`<div class="lab-form"><label>Category<select id="lab_unitCat"><option value="length">Length</option><option value="mass">Mass</option><option value="temp">Temperature</option><option value="data">Data</option></select></label>${field('unitVal','Value')}<label>From<select id="lab_from"></select></label><label>To<select id="lab_to"></select></label></div><div class="lab-output"><span>Converted value</span><strong id="lab_out">—</strong></div>`,
+    finance:()=>`<div class="lab-form"><label>Mode<select id="lab_finMode"><option value="simple">Simple interest</option><option value="compound">Compound interest</option><option value="emi">Loan EMI</option><option value="discount">Discount</option><option value="gst">GST</option></select></label>${field('principal','Principal / Price')} ${field('rate','Rate %','number','5')} ${field('time','Time / Tenure','number','1')} ${field('extra','Periods / Discount / GST','number','12')}</div><div class="lab-output"><span>Result</span><strong id="lab_out">—</strong><div id="lab_steps" class="mini-note"></div></div>`,
+    statistics:()=>`<div class="lab-form"><label style="grid-column:1/-1">Values<textarea id="lab_values" rows="4" placeholder="12, 18, 21, 25, 31"></textarea></label></div><div class="lab-output"><span>Statistical snapshot</span><div id="lab_out"><strong>—</strong></div></div>`,
+    geometry:()=>`<div class="lab-form"><label>Shape<select id="lab_shape"><option value="rect">Rectangle</option><option value="circle">Circle</option><option value="triangle">Triangle</option><option value="cylinder">Cylinder</option><option value="sphere">Sphere</option></select></label>${field('a','Dimension A')} ${field('b','Dimension B')} ${field('c','Dimension C')}</div><div class="lab-output"><span>Result</span><strong id="lab_out">—</strong><div id="lab_steps" class="mini-note"></div></div>`,
+    date:()=>`<div class="lab-form"><label>Start date<input id="lab_start" type="date"></label><label>End date<input id="lab_end" type="date"></label></div><div class="lab-output"><span>Difference</span><strong id="lab_out">—</strong><div id="lab_steps" class="mini-note"></div></div>`,
+    currency:()=>`<div class="lab-form">${field('amount','Amount','number','100')}<label>From<select id="lab_cf"><option>INR</option><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option></select></label><label>To<select id="lab_ct"><option>USD</option><option>INR</option><option>EUR</option><option>GBP</option><option>JPY</option></select></label>${field('rate','Your rate','number','1')}</div><div class="lab-output"><span>Converted</span><strong id="lab_out">—</strong><div class="mini-note">Rate is intentionally user-supplied so this offline calculator never pretends to have live market data.</div></div>`,
+    graph:()=>`<div class="lab-form"><label style="grid-column:1/-1">Function <input id="lab_fn" value="sin(x) + x/4" placeholder="sin(x) + x/4"></label><label>Min X<input id="lab_min" type="number" value="-10"></label><label>Max X<input id="lab_max" type="number" value="10"></label></div><canvas id="lab_canvas" height="320" style="width:100%;margin-top:18px;border:1px solid var(--line);border-radius:18px;background:var(--card2)"></canvas><div class="mini-note">Supported: x, +, -, *, /, ^, sin, cos, tan, sqrt, abs, log, pi.</div>`,
+    explain:()=>`<div class="lab-form"><label style="grid-column:1/-1">Calculation<input id="lab_expr" placeholder="15 × 8 + 20"></label></div><div class="lab-output"><span>Simple explanation</span><div id="lab_out"><strong>—</strong></div></div>`
+  };
+  function setupLab(type){
+    const ids=['lab_unitCat','lab_unitVal','lab_from','lab_to','lab_finMode','lab_principal','lab_rate','lab_time','lab_extra','lab_values','lab_shape','lab_a','lab_b','lab_c','lab_start','lab_end','lab_amount','lab_cf','lab_ct','lab_fn','lab_min','lab_max','lab_expr'];
+    ids.forEach(id=>$('#'+id)?.addEventListener('input',()=>calcLab(type)));ids.forEach(id=>$('#'+id)?.addEventListener('change',()=>calcLab(type)));
+    if(type==='unit') populateUnits();
+    if(type==='date'){const d=new Date(), iso=new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);$('#lab_start').value=iso;$('#lab_end').value=iso;}
+    if(type==='graph') setTimeout(()=>drawGraph(),30);
+    calcLab(type);
+  }
+  const units={length:{m:1,km:1000,cm:.01,mm:.001,ft:.3048,in:.0254},mass:{kg:1,g:.001,lb:.453592,oz:.0283495},temp:{C:'temp',F:'temp',K:'temp'},data:{B:1,KB:1024,MB:1048576,GB:1073741824}};
+  function populateUnits(){const cat=$('#lab_unitCat').value, list=Object.keys(units[cat]);['lab_from','lab_to'].forEach(id=>{$('#'+id).innerHTML=list.map(x=>`<option value="${x}">${x}</option>`).join('')});$('#lab_to').value=list[1]||list[0];}
+  function convertUnit(v,from,to,cat){if(cat==='temp'){const c=from==='C'?v:from==='F'?(v-32)*5/9:v-273.15;return to==='C'?c:to==='F'?c*9/5+32:c+273.15}return v*units[cat][from]/units[cat][to]}
+  function calcLab(type){
+    if(type==='unit'){if(!$('#lab_from'))return;populateUnits();const v=Number($('#lab_unitVal').value||0);$('#lab_out').textContent=money(convertUnit(v,$('#lab_from').value,$('#lab_to').value,$('#lab_unitCat').value));return}
+    if(type==='finance'){const mode=$('#lab_finMode').value,p=Number($('#lab_principal').value||0),r=Number($('#lab_rate').value||0)/100,t=Number($('#lab_time').value||0),x=Number($('#lab_extra').value||12);let out=0,steps='';if(mode==='simple'){out=p*(1+r*t);steps=`Interest = ${money(p*r*t)} · Total = Principal + Interest`;}if(mode==='compound'){const n=Math.max(1,Math.floor(x));out=p*Math.pow(1+r/n,n*t);steps=`Compound periods/year = ${n} · Total includes compound interest`;}if(mode==='emi'){const n=Math.max(1,Math.floor(t*12)),m=r/12;out=m? p*m*Math.pow(1+m,n)/(Math.pow(1+m,n)-1):p/n;steps=`Monthly payment over ${n} months`;}if(mode==='discount'){out=p*(1-r);steps=`You save ${money(p*r)} from the original price`;}if(mode==='gst'){out=p*(1+r);steps=`GST amount = ${money(p*r)}`;}$('#lab_out').textContent=money(out);$('#lab_steps').textContent=steps;return}
+    if(type==='statistics'){const vals=($('#lab_values').value||'').split(/[,\s]+/).map(Number).filter(Number.isFinite);if(!vals.length){$('#lab_out').innerHTML='<strong>—</strong>';return}vals.sort((a,b)=>a-b);const sum=vals.reduce((a,b)=>a+b,0),mean=sum/vals.length,mid=Math.floor(vals.length/2),median=vals.length%2?vals[mid]:(vals[mid-1]+vals[mid])/2,variance=vals.reduce((a,b)=>a+(b-mean)**2,0)/vals.length;$('#lab_out').innerHTML=`<strong>${money(mean)}</strong><div class="mini-note">Mean · Median ${money(median)} · Min ${money(vals[0])} · Max ${money(vals.at(-1))} · Range ${money(vals.at(-1)-vals[0])} · σ ${money(Math.sqrt(variance))}</div>`;return}
+    if(type==='geometry'){const sh=$('#lab_shape').value,a=Number($('#lab_a').value||0),b=Number($('#lab_b').value||0),c=Number($('#lab_c').value||0);let out=0,detail='';if(sh==='rect'){out=a*b;detail=`Area = a × b · Perimeter = ${money(2*(a+b))}`;}if(sh==='circle'){out=Math.PI*a*a;detail=`Area = πr² · Circumference = ${money(2*Math.PI*a)}`;}if(sh==='triangle'){out=a*b/2;detail=`Area = ½ × base × height`;}if(sh==='cylinder'){out=Math.PI*a*a*b;detail=`Volume = πr²h`;}if(sh==='sphere'){out=4/3*Math.PI*a**3;detail=`Volume = 4/3πr³`;}$('#lab_out').textContent=money(out);$('#lab_steps').textContent=detail;return}
+    if(type==='date'){const a=new Date($('#lab_start').value),b=new Date($('#lab_end').value);if(isNaN(a)||isNaN(b))return;const days=Math.round(Math.abs(b-a)/86400000);$('#lab_out').textContent=`${days.toLocaleString()} days`;$('#lab_steps').textContent=`≈ ${(days/7).toFixed(1)} weeks · ${(days/30.4375).toFixed(1)} months · ${(days/365.25).toFixed(2)} years`;return}
+    if(type==='currency'){const amount=Number($('#lab_amount').value||0),rate=Number($('#lab_rate').value||0);$('#lab_out').textContent=rate?`${money(amount*rate)} ${$('#lab_ct').value}`:'—';return}
+    if(type==='graph'){drawGraph();return}
+    if(type==='explain'){const raw=$('#lab_expr').value.trim();const out=$('#lab_out');if(!raw){out.innerHTML='<strong>—</strong>';return}const normalized=raw.replaceAll('×','*').replaceAll('÷','/').replaceAll('−','-');const ops=[];if(normalized.includes('*'))ops.push('Multiply the relevant values.');if(normalized.includes('/'))ops.push('Divide the relevant values.');if(normalized.includes('+'))ops.push('Add the parts together.');if(normalized.includes('-'))ops.push('Subtract the second part from the first.');out.innerHTML=`<strong>${escapeHtml(raw)}</strong><div class="mini-note">${ops.length?ops.join(' '):'This is a direct value or simple expression.'} For the exact numeric result, enter it in the main calculator.</div>`}
+  }
+  function drawGraph(){const c=$('#lab_canvas');if(!c)return;const ctx=c.getContext('2d'),dpr=devicePixelRatio||1,w=c.clientWidth,h=c.clientHeight;c.width=w*dpr;c.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);const min=Number($('#lab_min').value||-10),max=Number($('#lab_max').value||10);const fn=($('#lab_fn').value||'0').toLowerCase().replace(/\^/g,'**');let f;try{if(!/^[0-9x+\-*/()., _a-z*]+$/.test(fn)||/(constructor|window|document|eval|function|alert)/.test(fn))throw 0;f=new Function('x','const {sin,cos,tan,sqrt,abs,log,PI}=Math;return '+fn.replace(/\bpi\b/g,'PI'));f(0)}catch{ctx.fillStyle='#b33';ctx.font='14px system-ui';ctx.fillText('Try a function like sin(x) + x/4',20,30);return}const pad=25,scaleX=(w-pad*2)/(max-min), range=12,scaleY=(h-pad*2)/range;ctx.strokeStyle='#ccd5cf';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad,h/2);ctx.lineTo(w-pad,h/2);ctx.moveTo(pad,pad);ctx.lineTo(pad,h-pad);ctx.stroke();ctx.strokeStyle='#4e9b7d';ctx.lineWidth=3;ctx.beginPath();let started=false;for(let px=pad;px<=w-pad;px+=2){const x=min+(px-pad)/scaleX;let y;try{y=f(x)}catch{started=false;continue}if(!Number.isFinite(y)||Math.abs(y)>range){started=false;continue}const py=h/2-y*scaleY;if(!started){ctx.moveTo(px,py);started=true}else ctx.lineTo(px,py)}ctx.stroke()}
+  $$('[data-lab]').forEach(b=>b.addEventListener('click',()=>openLab(b.dataset.lab)));
+  function updateDashboard(){const history=JSON.parse(localStorage.getItem('calcStudio.history')||'[]');const today=new Date().toDateString();const todayCount=history.filter(x=>new Date(x.timestamp).toDateString()===today).length;$('#dashToday').textContent=todayCount;$('#dashLast').textContent=history[0]?.result||'—';$('#dashFav').textContent=history.filter(x=>x.favorite).length;$('#dashStreak').textContent=$('#sessionStreak')?.textContent||'0';}
+  updateDashboard();setInterval(updateDashboard,700);
+  const vizInput=$('#vizInput'),barVisual=$('#barVisual');
+  function renderViz(){const vals=vizInput.value.split(/[,\s]+/).map(Number).filter(Number.isFinite).slice(0,18);const max=Math.max(...vals,1);barVisual.innerHTML=vals.map(v=>`<span class="viz-bar" style="height:${Math.max(7,v/max*92)}%" data-value="${escapeHtml(v)}"></span>`).join('')}
+  vizInput.addEventListener('input',renderViz);$('#vizAnimate').addEventListener('click',()=>{$$('.viz-bar').forEach((b,i)=>{b.classList.remove('animate');setTimeout(()=>b.classList.add('animate'),i*45)})});renderViz();
+})();
+</script>
+</body>
+</html>
