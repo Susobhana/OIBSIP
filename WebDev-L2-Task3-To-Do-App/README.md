@@ -1,25 +1,17 @@
-# To-Do Web App
+# Aurevia — Focus & Flow Studio
 
-**Oasis Infobyte Internship — Level 2, Task 3**
+A dark-violet productivity dashboard with a custom transparent SVG brand mark, colorful animated aurora ribbons and floral SVG accents, a multicolor orbital cursor, motivational quotes that change on each app opening, task analytics, search and sorting, task duplication, undo-delete, and local task persistence.
 
-## About
-A web-based task management application designed to help users organize daily activities and keep track of their tasks.
+## Run locally
+1. Extract this ZIP archive.
+2. Open the `OIBSIP_ToDo_Studio` folder.
+3. Double-click `index.html` in a modern browser.
 
-## Features
-- Add new tasks
-- View the task list
-- Mark tasks as completed
-- Delete tasks
-- Interactive user interface
-- Responsive design
+## Data and privacy
+Tasks are stored in this browser using localStorage. Use Export to save a JSON backup before clearing browser data. No account or server is required.
 
-## Technologies Used
-- HTML5
-- CSS3
-- JavaScript
+## Included
+- `index.html` — application, styles, and interactions
+- `aurevia-logo.svg` — transparent vector logo
 
-## How to Run
-Open `index.html` in a modern web browser.
-
-## Internship
-Oasis Infobyte — Web Development & Designing Internship
+The Google Fonts link is optional; system fallbacks are included. Most features work offline.

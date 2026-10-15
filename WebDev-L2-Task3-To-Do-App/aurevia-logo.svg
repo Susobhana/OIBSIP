@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 118" role="img" aria-labelledby="title desc">
+<title id="title">Aurevia</title><desc id="desc">A colorful luminous butterfly flower beside the Aurevia wordmark, with the tagline Plan Focus Flourish.</desc>
+<defs>
+ <linearGradient id="petalA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFB2E8"/><stop offset=".48" stop-color="#A58BFF"/><stop offset="1" stop-color="#66E9FF"/></linearGradient>
+ <linearGradient id="petalB" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#7AF0D1"/><stop offset=".55" stop-color="#76CFFF"/><stop offset="1" stop-color="#C7A0FF"/></linearGradient>
+ <linearGradient id="word" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#FF9DE2"/><stop offset=".48" stop-color="#B8A2FF"/><stop offset="1" stop-color="#70E8FF"/></linearGradient>
+ <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g transform="translate(54 47)" filter="url(#glow)">
+ <path d="M0 9C-36-28-23-52-7-42C4-35 7-12 0 9Z" fill="url(#petalA)" stroke="#f6d8ff" stroke-opacity=".65" stroke-width="1"/>
+ <path d="M0 9C20-42 48-34 39-13C33 1 14 9 0 9Z" fill="url(#petalB)" stroke="#d4faff" stroke-opacity=".65" stroke-width="1"/>
+ <path d="M0 9C-35-2-45 17-27 27C-15 34-4 23 0 9Z" fill="url(#petalB)" stroke="#d4faff" stroke-opacity=".65" stroke-width="1"/>
+ <path d="M0 9C14 19 16 43 2 43C-9 42-10 24 0 9Z" fill="url(#petalA)" stroke="#f6d8ff" stroke-opacity=".65" stroke-width="1"/>
+ <path d="M0 8C-4 29-15 43-29 46M1 8C12 27 22 33 33 34" fill="none" stroke="url(#word)" stroke-width="2" stroke-linecap="round"/>
+ <path d="M-1 8C-10-9-17-24-12-35M2 8C15-9 26-18 35-19M-1 9C-20 8-30 12-35 19" fill="none" stroke="#ffffff" stroke-opacity=".65" stroke-width="1.2"/>
+ <circle r="4.5" fill="#FFF2C9"/><path d="M-43-23l3-7 3 7 7 3-7 3-3 7-3-7-7-3z" fill="#FFD28C"/><path d="M44-39l2.5-5 2.5 5 5 2.5-5 2.5-2.5 5-2.5-5-5-2.5z" fill="#B7A3FF"/>
+</g>
+<path d="M20 82C70 112 94 14 157 19" fill="none" stroke="url(#word)" stroke-width="1.8" stroke-linecap="round" opacity=".8"/>
+<text x="103" y="57" fill="url(#word)" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-style="italic" font-weight="bold" letter-spacing="-1.5">Aurevia</text>
+<path d="M108 68C178 79 270 79 365 64" fill="none" stroke="url(#word)" stroke-width="1.2" opacity=".75"/>
+<text x="118" y="91" fill="#CBD7FF" font-family="Arial, Helvetica, sans-serif" font-size="10" letter-spacing="4.1">PLAN  ✦  FOCUS  ✦  FLOURISH</text>
+<g fill="#FFB4E8"><circle cx="389" cy="33" r="2"/><circle cx="380" cy="46" r="1.5"/></g>
+</svg>
